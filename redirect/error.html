@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title id="PageTitle"></title>
+        
+    </head>
+    <body>
+        <h1 id="ErrorName"></h1>
+        <p id="description"></p>
+        <script>
+    function getParameterByName(name, url = window.location.href) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+    var ErrorType = getParameterByName("type");
+    if (ErrorType == "1") {
+        var ErrorTypeName = "No Arguments";
+        document.getElementById("PageTitle").innerHTML = `Error: ${ErrorTypeName}`;
+        document.getElementById("ErrorName").innerHTML = `${ErrorTypeName}`
+        document.getElementById("description").innerHTML = `Use <a href="">base64</a> to create a "short" link. <a href="href=dracoYT.github.io">Click Here to return to the main page!</a>`
+    }
+
+
+
+        </script>
+    </body>
+</html>
