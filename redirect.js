@@ -10,11 +10,24 @@ function getParameterByName(name, url = window.location.href) {
 }
 
 // Redirect
-
+var protocol_ok = DecryptedLink.startsWith("http://") || DecryptedLink.startsWith("https://") || DecryptedLink.startsWith("ftp://");
 var q = getParameterByName("to");
 var DecryptedLink = window.atob(q);
-  if (q == null) {
-    window.location.href = "./redirect/error?code=1";
+// // // // // // //
+
+if (!protocol_ok) {
+
+    var finalurl = "http://" + DecryptedLink;
 } else {
-    window.location.href = `${DecryptedLink}`;
+    var finalurl = DecryptedLink
+
 }
+
+if (q == null) {
+    window.location.href = "./redirect/create";
+} else {
+    window.location.href = `${finalurl}`;
+}
+
+
+
